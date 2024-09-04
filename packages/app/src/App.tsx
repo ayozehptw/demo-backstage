@@ -37,6 +37,9 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 
+import { ThemeProvider } from '@material-ui/core';
+import { twTheme } from './theme/twTheme';
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -59,6 +62,14 @@ const app = createApp({
   components: {
     SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
+    themes: [{
+        id: 'my-theme',
+        title: 'My Custom Theme',
+        variant: 'light',
+        Provider: ({children}) => (
+            <ThemeProvider theme={twTheme} children={children}/>
+        ),
+    }]
 });
 
 const routes = (
