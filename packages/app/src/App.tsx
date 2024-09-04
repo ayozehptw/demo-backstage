@@ -40,6 +40,10 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 // import { ThemeProvider } from '@material-ui/core';
 // import { twTheme } from './theme/twTheme';
 
+import {HomepageCompositionRoot} from '@backstage/plugin-home';
+import {HomePage} from './components/home/HomePage';
+
+
 const app = createApp({
   apis,
   bindRoutes({ bind }) {
@@ -74,7 +78,9 @@ const app = createApp({
 
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<Navigate to="catalog" />} />
+      <Route path="/" element={<HomepageCompositionRoot/>}>
+          <HomePage/>
+      </Route>
     <Route path="/catalog" element={<CatalogIndexPage />} />
     <Route
       path="/catalog/:namespace/:kind/:name"
