@@ -44,6 +44,7 @@ import {HomepageCompositionRoot} from '@backstage/plugin-home';
 import {HomePage} from './components/home/HomePage';
 
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { HelloPage } from '@internal/backstage-plugin-hello';
 
 const app = createApp({
   apis,
@@ -124,6 +125,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/hello" element={<HelloPage />} />
   </FlatRoutes>
 );
 
