@@ -64,6 +64,8 @@ import {
     isGithubActionsAvailable,
 } from '@backstage-community/plugin-github-actions';
 
+import {HelloPage} from '@internal/backstage-plugin-hello'
+
 const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
@@ -189,6 +191,10 @@ const serviceEntityPage = (
     <EntityLayout.Route path="/docs" title="Docs">
       {techdocsContent}
     </EntityLayout.Route>
+
+      <EntityLayout.Route path="/hello" title="Hello">
+          <HelloPage />
+      </EntityLayout.Route>
   </EntityLayout>
 );
 
