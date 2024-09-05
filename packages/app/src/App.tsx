@@ -43,6 +43,7 @@ import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/
 import {HomepageCompositionRoot} from '@backstage/plugin-home';
 import {HomePage} from './components/home/HomePage';
 
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
 
 const app = createApp({
   apis,
@@ -64,7 +65,18 @@ const app = createApp({
     });
   },
   components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
+      SignInPage: props => (
+          <SignInPage
+              {...props}
+              auto
+              provider={{
+                  id: 'github-auth-provider',
+                  title: 'GitHub',
+                  message: 'Sign in using GitHub',
+                  apiRef: githubAuthApiRef,
+              }}
+          />
+      ),
   },
     // themes: [{
     //     id: 'my-theme',
